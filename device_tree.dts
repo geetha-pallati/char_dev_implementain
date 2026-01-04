@@ -1,0 +1,26 @@
+/ {
+    aliases {
+        serial0 = &uart0;
+    };
+};
+
+uart0: my_uart@48020000 {
+    compatible = "myvendor,my-uart";
+    reg = <0x48020000 0x1000>;
+    interrupts = <29>;
+    clocks = <&uart_clk>;
+    clock-names = "uart";
+    current-speed = <115200>;
+    status = "okay";
+};
+/*
+| Property        | Meaning                  |
+| --------------- | ------------------------ |
+| `compatible`    | Must match in driver     |
+| `reg`           | Base address & size      |
+| `interrupts`    | IRQ number               |
+| `clocks`        | Bind to clock controller |
+| `current-speed` | Default baud rate        |
+| `status`        | Enable device            |
+
+*/
